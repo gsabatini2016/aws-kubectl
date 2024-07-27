@@ -1,0 +1,14 @@
+name: ImageBuildAutomation
+
+# Pipeline Automatic Trigger
+on:
+  schedule:
+    - cron: "15 4,5 * * *"
+
+jobs:
+  checkLatestVersion: #  Check Latest Kubectl Version & Compare With Latest Knowed Version.
+    runs-on:
+      group: ubuntu-runners
+    steps:
+      - name: checkLatestVersion
+        run: latestVersion=$(curl -L -s https://dl.k8s.io/release/stable.txt)
